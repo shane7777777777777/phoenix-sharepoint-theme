@@ -1,0 +1,18 @@
+{
+  "name": "phoenix-sharepoint-theme",
+  "version": "1.0.0",
+  "description": "Custom SharePoint Online theme and branded homepage for Phoenix Electric LLC",
+  "private": true,
+  "scripts": {
+    "start": "open index.html 2>/dev/null || xdg-open index.html 2>/dev/null || echo 'Open index.html in your browser'",
+    "validate": "node validate.js",
+    "test": "npm run validate"
+  },
+  "keywords": [
+    "sharepoint",
+    "theme",
+    "phoenix-electric"
+  ],
+  "author": "Phoenix Electric LLC",
+  "license": "UNLICENSED"
+}
