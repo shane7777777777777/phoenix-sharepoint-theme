@@ -71,8 +71,8 @@ Upload `index.html` and the `assets/` folder to your SharePoint site (e.g., the 
 ### Quick Start
 
 ```bash
-npm install   # install dev dependencies
 npm start     # open homepage in default browser
+npm test      # run validation checks
 ```
 
 ### Available Scripts
