@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Ops - Premium Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --phoenix-red: #FF1A1A;
+            --phoenix-gold: #D4AF37;
+            --phoenix-gold-light: #E8C547;
+            --deep-black: #0a0a0a;
+            --card-bg: rgba(30, 30, 30, 0.85);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --card-hover: rgba(255, 26, 26, 0.15);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --glow-red: rgba(255, 26, 26, 0.4);
+            --glow-gold: rgba(212, 175, 55, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--deep-black);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, #1a0a0a 0%, var(--deep-black) 100%);
+            padding: 0.75rem 2rem;
+            border-bottom: 3px solid var(--phoenix-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 26, 26, 0.2);
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            filter: drop-shadow(0 0 8px var(--glow-gold));
+        }
+
+        .site-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--phoenix-red);
+            text-shadow: 0 0 20px var(--glow-red);
+            letter-spacing: 0.05em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            padding: 0.5rem 1.25rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: var(--phoenix-red);
+            border-color: var(--phoenix-red);
+        }
+
+        .nav-btn.active {
+            background: var(--phoenix-red);
+            border-color: var(--phoenix-red);
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .user-name {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--phoenix-gold), var(--phoenix-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--deep-black);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 3rem;
+            position: relative;
+        }
+
+        /* Phoenix Background - 3D floating effect with transparent PNG */
+        .phoenix-backdrop {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Responsive width - 50% of viewport width, with min/max constraints */
+            width: 50vw;
+            min-width: 300px;
+            max-width: 700px;
+            height: auto;
+            z-index: 0;
+            pointer-events: none;
+            /* Mix blend mode: lighten makes black pixels transparent on dark bg */
+            mix-blend-mode: lighten;
+            /* Golden glow effect for 3D pop */
+            filter:
+                drop-shadow(0 0 40px rgba(212, 175, 55, 0.7))
+                drop-shadow(0 0 80px rgba(212, 175, 55, 0.5))
+                drop-shadow(0 0 120px rgba(255, 100, 50, 0.4));
+            /* Slight scale for "coming at you" effect */
+            animation: phoenix-breathe 4s ease-in-out infinite;
+        }
+
+        @keyframes phoenix-breathe {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                filter:
+                    drop-shadow(0 0 40px rgba(212, 175, 55, 0.7))
+                    drop-shadow(0 0 80px rgba(212, 175, 55, 0.5))
+                    drop-shadow(0 0 120px rgba(255, 100, 50, 0.4));
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.03);
+                filter:
+                    drop-shadow(0 0 60px rgba(212, 175, 55, 0.8))
+                    drop-shadow(0 0 100px rgba(212, 175, 55, 0.6))
+                    drop-shadow(0 0 160px rgba(255, 100, 50, 0.5));
+            }
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .section-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .section-dot.orange { background: #FF8C00; }
+        .section-dot.green { background: #00C9A7; }
+        .section-dot.gold { background: var(--phoenix-gold); }
+
+        .section-header.orange { color: #FF8C00; }
+        .section-header.green { color: #00C9A7; }
+        .section-header.gold { color: var(--phoenix-gold); }
+
+        /* Card Grid - Main Hub */
+        .main-hub {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hub-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hub-center {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hub-center-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .hub-center-phoenix {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+        }
+
+        .hub-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100px;
+        }
+
+        .glass-card:hover {
+            background: var(--card-hover);
+            border-color: rgba(255, 26, 26, 0.4);
+            box-shadow: 0 8px 32px var(--glow-red);
+            transform: translateY(-2px);
+        }
+
+        .glass-card.gold-accent:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 32px var(--glow-gold);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* AI Badge */
+        .ai-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--phoenix-gold);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--phoenix-gold);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .ai-badge::before {
+            content: "AI";
+        }
+
+        .glass-card.has-badge {
+            position: relative;
+        }
+
+        /* Bottom Zones */
+        .bottom-zones {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .zone {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .zone-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-hub {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hub-center {
+                grid-column: span 2;
+                order: -1;
+            }
+
+            .phoenix-backdrop {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-buttons {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .main-hub {
+                grid-template-columns: 1fr;
+            }
+
+            .hub-center {
+                order: 0;
+            }
+
+            .bottom-zones {
+                grid-template-columns: 1fr;
+            }
+
+            .phoenix-backdrop {
+                width: 250px;
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none">
+                    <path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="#D4AF37"/>
+                </svg>
+                <span class="site-title">PHOENIX OPS</span>
+            </div>
+
+            <nav class="nav-buttons">
+                <a href="#" class="nav-btn active">Documents</a>
+                <a href="#" class="nav-btn">Teams</a>
+                <a href="#" class="nav-btn">Calendar</a>
+                <a href="#" class="nav-btn">Settings</a>
+            </nav>
+
+            <div class="user-section">
+                <span class="user-name">Shane Warehime</span>
+                <div class="user-avatar">SW</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Phoenix Background Image - Transparent PNG -->
+        <img src="assets/Phoenix_Transparent.png" alt="Phoenix Electric" class="phoenix-backdrop">
+
+        <!-- Section Header -->
+        <div class="section-header orange">
+            <span class="section-dot orange"></span>
+            MAIN HUB — OFFICE OPERATIONS
+        </div>
+
+        <!-- Main Hub Grid -->
+        <div class="main-hub">
+            <!-- Left Column -->
+            <div class="hub-left">
+                <a href="/ACCOUNTING" class="glass-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">ACCOUNTING</div>
+                    <div class="card-subtitle">Invoices & Payments</div>
+                </a>
+                <a href="/REPORTS" class="glass-card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">REPORTS</div>
+                    <div class="card-subtitle">Analytics</div>
+                </a>
+                <a href="/EMPLOYEES" class="glass-card">
+                    <div class="card-icon">👥</div>
+                    <div class="card-title">EMPLOYEES</div>
+                    <div class="card-subtitle">Team Management</div>
+                </a>
+            </div>
+
+            <!-- Center Column -->
+            <div class="hub-center">
+                <div class="hub-center-top">
+                    <a href="/CONSTRUCTION" class="glass-card">
+                        <div class="card-icon">🏗️</div>
+                        <div class="card-title">CONSTRUCTION</div>
+                        <div class="card-subtitle">Builder Projects</div>
+                    </a>
+                    <a href="/SERVICE" class="glass-card">
+                        <div class="card-icon">🔧</div>
+                        <div class="card-title">SERVICE</div>
+                        <div class="card-subtitle">Customer Jobs</div>
+                    </a>
+                </div>
+                <div class="hub-center-phoenix">
+                    <!-- Phoenix logo shows through from backdrop -->
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="hub-right">
+                <a href="/PRICEBOOK" class="glass-card">
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">PRICEBOOK</div>
+                    <div class="card-subtitle">Rates & Materials</div>
+                </a>
+                <a href="/VENDORS" class="glass-card">
+                    <div class="card-icon">🏪</div>
+                    <div class="card-title">VENDORS</div>
+                    <div class="card-subtitle">Suppliers</div>
+                </a>
+                <a href="/TAXES" class="glass-card">
+                    <div class="card-icon">🗂️</div>
+                    <div class="card-title">TAXES</div>
+                    <div class="card-subtitle">2021-2025</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom Zones -->
+        <div class="bottom-zones">
+            <!-- Field Pub - Technician Access -->
+            <div class="zone">
+                <div class="section-header green">
+                    <span class="section-dot green"></span>
+                    FIELD PUB — TECHNICIAN ACCESS
+                </div>
+                <div class="zone-cards">
+                    <a href="/field/this-week" class="glass-card">
+                        <div class="card-icon">📅</div>
+                        <div class="card-title">This Week's Jobs</div>
+                        <div class="card-subtitle">Dec 16-20</div>
+                    </a>
+                    <a href="/field/next-week" class="glass-card">
+                        <div class="card-icon">📅</div>
+                        <div class="card-title">Next Week's Jobs</div>
+                        <div class="card-subtitle">Dec 23-27</div>
+                    </a>
+                    <a href="/field/drawings" class="glass-card">
+                        <div class="card-icon">📐</div>
+                        <div class="card-title">Job Drawings</div>
+                        <div class="card-subtitle">Plans & Specs</div>
+                    </a>
+                    <a href="/field/schedules" class="glass-card">
+                        <div class="card-icon">📆</div>
+                        <div class="card-title">Schedules</div>
+                        <div class="card-subtitle">Team Calendar</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- AI Zone - System Memory -->
+            <div class="zone">
+                <div class="section-header gold">
+                    <span class="section-dot gold"></span>
+                    AI ZONE — SYSTEM MEMORY
+                </div>
+                <div class="zone-cards">
+                    <a href="/_AI_MEMORY" class="glass-card gold-accent has-badge">
+                        <span class="ai-badge"></span>
+                        <div class="card-icon">🧠</div>
+                        <div class="card-title">_AI_MEMORY</div>
+                        <div class="card-subtitle">1,309 Customers</div>
+                    </a>
+                    <a href="/INTERNAL" class="glass-card gold-accent has-badge">
+                        <span class="ai-badge"></span>
+                        <div class="card-icon">🔒</div>
+                        <div class="card-title">INTERNAL</div>
+                        <div class="card-subtitle">System Configs</div>
+                    </a>
+                    <a href="/EMAIL_ARCHIVE" class="glass-card gold-accent has-badge">
+                        <span class="ai-badge"></span>
+                        <div class="card-icon">📧</div>
+                        <div class="card-title">EMAIL_ARCHIVE</div>
+                        <div class="card-subtitle">Processed Mail</div>
+                    </a>
+                    <a href="/PHOENIX_COMMAND" class="glass-card gold-accent has-badge">
+                        <span class="ai-badge"></span>
+                        <div class="card-icon">📱</div>
+                        <div class="card-title">PHOENIX_COMMAND</div>
+                        <div class="card-subtitle">Mobile App Data</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        Phoenix Electric LLC &copy; 2026 | Phoenix Ops SharePoint
+    </footer>
+</body>
+</html>
